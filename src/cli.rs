@@ -3,21 +3,21 @@ use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 pub enum Action {
-    /// Append a task to the journal file
-    Add { 
-      /// The task description text
-      #[structopt()]
-      text: String
-    },
+  /// Append a task to the journal file
+  Add {
+    /// The task description text
+    #[structopt()]
+    text: String,
+  },
 
-    /// Remove an entry from the journal file by position
-    Done { 
-      /// Task position number
-      #[structopt()]
-      position: usize
-    },
-    /// List all tasks in the journal file
-    List
+  /// Remove an entry from the journal file by position
+  Done {
+    /// Task position number
+    #[structopt()]
+    position: usize,
+  },
+  /// List all tasks in the journal file
+  List,
 }
 
 #[derive(Debug, StructOpt)]
@@ -35,5 +35,5 @@ pub struct CommandLineArgs {
 
   /// Activate Debug Mode
   #[structopt(short, long)]
-  pub debug: bool
+  pub debug: bool,
 }

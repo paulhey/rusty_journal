@@ -1,9 +1,9 @@
 use chrono::Local;
 use chrono::{serde::ts_seconds, DateTime, Utc};
 use serde::{Deserialize, Serialize};
-use std::fmt::{self, write};
+use std::fmt::{self};
 use std::fs::{File, OpenOptions};
-use std::io::{BufReader, Error, ErrorKind, Result, Seek, SeekFrom};
+use std::io::{Error, ErrorKind, Result, Seek, SeekFrom};
 use std::path::PathBuf;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,7 +53,7 @@ fn collect_tasks(mut file: &File) -> Result<Vec<Task>> {
 
 pub fn add_task(file_path: PathBuf, task: Task) -> Result<()> {
   // open the file_path
-  let mut file = OpenOptions::new()
+  let file = OpenOptions::new()
     .read(true)
     .write(true)
     .create(true)
@@ -74,7 +74,7 @@ pub fn add_task(file_path: PathBuf, task: Task) -> Result<()> {
 
 pub fn complete_task(file_path: PathBuf, position: usize) -> Result<()> {
   // Open the file
-  let mut file = OpenOptions::new().read(true).write(true).open(file_path)?;
+  let file = OpenOptions::new().read(true).write(true).open(file_path)?;
 
   // Read the file contents as a Vec of Tasks
   let mut tasks: Vec<Task> = collect_tasks(&file)?;
@@ -100,10 +100,10 @@ pub fn complete_task(file_path: PathBuf, position: usize) -> Result<()> {
 
 pub fn list_tasks(file_path: PathBuf) -> Result<()> {
   // Open the file
-  let mut file = OpenOptions::new().read(true).open(file_path)?;
+  let file = OpenOptions::new().read(true).open(file_path)?;
 
   // Read the file contents as a Vec of Tasks
-  let mut tasks: Vec<Task> = collect_tasks(&file)?;
+  let tasks: Vec<Task> = collect_tasks(&file)?;
 
   // Enumerate and display tasks, if any.
   if tasks.is_empty() {
