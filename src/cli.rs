@@ -7,7 +7,7 @@ pub enum Action {
     Add { 
       /// The task description text
       #[structopt()]
-      task: String
+      text: String
     },
 
     /// Remove an entry from the journal file by position
@@ -29,9 +29,9 @@ pub struct CommandLineArgs {
   #[structopt(subcommand)]
   pub action: Action,
 
-  /// Use a non-default journal file
+  /// Use a non-default journal file path
   #[structopt(parse(from_os_str), short, long)]
-  pub file: Option<PathBuf>,
+  pub filepath: Option<PathBuf>,
 
   /// Activate Debug Mode
   #[structopt(short, long)]
