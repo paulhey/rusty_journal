@@ -109,10 +109,8 @@ pub fn list_tasks(file_path: PathBuf) -> Result<()> {
   if tasks.is_empty() {
     println!("There are no tasks stored.");
   } else {
-    let mut index = 1;
-    for task in tasks {
-      println!("[{}] : {}", index, task);
-      index += 1;
+    for (index, task) in tasks.iter().enumerate() {
+      println!("[{}] : {}", index + 1, task);
     }
   }
 
