@@ -1,7 +1,7 @@
 use chrono::Local;
 use chrono::{serde::ts_seconds, DateTime, Utc};
 use serde::{Deserialize, Serialize};
-use std::fmt::{self};
+use std::fmt;
 use std::fs::{File, OpenOptions};
 use std::io::{Error, ErrorKind, Result, Seek, SeekFrom};
 use std::path::PathBuf;

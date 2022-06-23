@@ -1,5 +1,5 @@
-use home::home_dir;
 use anyhow::anyhow;
+use home::home_dir;
 use std::path::PathBuf;
 use structopt::StructOpt;
 
@@ -17,28 +17,32 @@ fn get_default_filepath() -> Option<PathBuf> {
 }
 
 fn main() -> anyhow::Result<()> {
-  //
+  // Build the CommandLineArgs from args
   let CommandLineArgs {
     action,
     filepath,
     debug,
   } = CommandLineArgs::from_args();
 
+  // Set the filepath
   let file_path = filepath
     .or_else(get_default_filepath)
     .ok_or(anyhow!("Failed to find journal file"))?;
-    // .expect("Failed to find journal file");
+  // .expect("Failed to find journal file");
 
   if debug {
     println!("ARGS: <{:#?}> ", CommandLineArgs::from_args());
+
     Ok(())
   } else {
+    // Do the requested action from the CommandLineArgs
     match action {
       Add { text } => tasks::add_task(file_path, Task::new(text)),
       Done { position } => tasks::complete_task(file_path, position),
       List => tasks::list_tasks(file_path),
     }?;
     // .expect("Failed to perform action!")
+
     Ok(())
   }
 }
