@@ -1,7 +1,7 @@
 use anyhow::anyhow;
 use home::home_dir;
 use std::path::PathBuf;
-use structopt::StructOpt;
+use clap::Parser;
 
 mod cli;
 use cli::{Action::*, CommandLineArgs};

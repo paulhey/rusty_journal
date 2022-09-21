@@ -1,39 +1,39 @@
 use std::path::PathBuf;
-use structopt::StructOpt;
+use clap::{Parser,  Subcommand};
 
-#[derive(Debug, StructOpt)]
+#[derive(Debug, Subcommand)]
 pub enum Action {
   /// Append a task to the journal file
   Add {
     /// The task description text
-    #[structopt()]
+    #[clap()]
     text: String,
   },
 
   /// Remove an entry from the journal file by position
   Done {
     /// Task position number
-    #[structopt()]
+    #[clap()]
     position: usize,
   },
   /// List all tasks in the journal file
   List,
 }
 
-#[derive(Debug, StructOpt)]
-#[structopt(
+#[derive(Debug, Parser)]
+#[clap(
   name = "Rusty Journal",
   about = "A command line to-do app written in Rust"
 )]
 pub struct CommandLineArgs {
-  #[structopt(subcommand)]
+  #[clap(subcommand)]
   pub action: Action,
 
   /// Use a non-default journal file path
-  #[structopt(parse(from_os_str), short, long)]
+  #[clap(parse(from_os_str), short, long)]
   pub filepath: Option<PathBuf>,
 
   /// Activate Debug Mode
-  #[structopt(short, long)]
+  #[clap(short, long)]
   pub debug: bool,
 }
