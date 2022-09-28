@@ -1,5 +1,5 @@
 use std::path::PathBuf;
-use clap::{Parser,  Subcommand};
+use clap::{Parser, Subcommand};
 
 #[derive(Debug, Subcommand)]
 pub enum Action {
@@ -30,7 +30,7 @@ pub struct CommandLineArgs {
   pub action: Action,
 
   /// Use a non-default journal file path
-  #[clap(parse(from_os_str), short, long)]
+  #[clap(value_parser, short, long)]
   pub filepath: Option<PathBuf>,
 
   /// Activate Debug Mode

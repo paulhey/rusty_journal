@@ -22,7 +22,7 @@ fn main() -> anyhow::Result<()> {
     action,
     filepath,
     debug,
-  } = CommandLineArgs::from_args();
+  } = CommandLineArgs::parse();
 
   // Set the filepath
   let file_path = filepath
@@ -31,7 +31,7 @@ fn main() -> anyhow::Result<()> {
   // .expect("Failed to find journal file");
 
   if debug {
-    println!("ARGS: <{:#?}> ", CommandLineArgs::from_args());
+    println!("ARGS: <{:#?}> ", CommandLineArgs::parse());
 
     Ok(())
   } else {
