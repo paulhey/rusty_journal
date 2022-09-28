@@ -23,7 +23,9 @@ pub enum Action {
 #[derive(Debug, Parser)]
 #[command(
   name = "Rusty Journal",
-  about = "A command line to-do app written in Rust"
+  about = "A command-line to-do app written in Rust",
+  author = "Paul Hey",
+  version = "0.2.8"
 )]
 pub struct CommandLineArgs {
   #[clap(subcommand)]
