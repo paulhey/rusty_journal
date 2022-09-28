@@ -21,7 +21,7 @@ pub enum Action {
 }
 
 #[derive(Debug, Parser)]
-#[clap(
+#[command(
   name = "Rusty Journal",
   about = "A command line to-do app written in Rust"
 )]
@@ -30,10 +30,10 @@ pub struct CommandLineArgs {
   pub action: Action,
 
   /// Use a non-default journal file path
-  #[clap(value_parser, short, long)]
+  #[arg(short, long)]
   pub filepath: Option<PathBuf>,
 
   /// Activate Debug Mode
-  #[clap(short, long)]
+  #[arg(short, long)]
   pub debug: bool,
 }
