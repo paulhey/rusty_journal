@@ -24,3 +24,28 @@ Options:
   -h, --help                 Print help information
   -V, --version              Print version information
  ```
+
+## Example
+
+```terminal
+❯ rj -f test.json list
+[1] : buy milk                                           [2021-OCT-15 17:21:16]
+[2] : Go home                                            [2021-OCT-15 17:21:24]
+[3] : Finish doing work                                  [2022-MAR-02 14:12:02]
+
+❯ rj -f test.json add "Do more work"
+
+❯ rj -f test.json list
+[1] : buy milk                                           [2021-OCT-15 17:21:16]
+[2] : Go home                                            [2021-OCT-15 17:21:24]
+[3] : Finish doing work                                  [2022-MAR-02 14:12:02]
+[4] : Do more work                                       [2022-OCT-05 17:06:28]
+
+❯ rj -f test.json done 4
+
+❯ rj -f test.json list
+[1] : buy milk                                           [2021-OCT-15 17:21:16]
+[2] : Go home                                            [2021-OCT-15 17:21:24]
+[3] : Finish doing work                                  [2022-MAR-02 14:12:02]
+
+```
