@@ -12,3 +12,6 @@ install:
 
 update:
 	cargo update
+
+cache:
+	cargo cache -a
