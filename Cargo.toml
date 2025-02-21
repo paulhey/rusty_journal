@@ -1,7 +1,7 @@
 [package]
 name = "rusty_journal"
 version = "0.2.9"
-edition = "2021"
+edition = "2024"
 
 [[bin]]
 name = "rj"
