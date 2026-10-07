@@ -25,7 +25,7 @@ pub enum Action {
     name = "Rusty Journal",
     about = "A command-line to-do app written in Rust",
     author = "Paul Hey",
-    version = "0.2.8"
+    version = "0.2.9"
 )]
 pub struct CommandLineArgs {
     #[clap(subcommand)]
